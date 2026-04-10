@@ -17,11 +17,56 @@ class DomainWhoisController extends Controller
     {
         $request->validate(['domain' => 'required|string']);
         
-        return response()->json([
-            'domain' => $request->domain,
-            'registrar' => 'Example Registrar, Inc.',
-            'creation_date' => '2000-01-01',
-            'status' => 'active'
-        ]);
+        $domain = $request->input('domain');
+        $whoisData = $this->getWhoisData($domain);
+        
+        if (!$whoisData) {
+            return response()->json(['error' => 'Unable to retrieve WHOIS data for domain'], 400);
+        }
+        
+        return response()->json($whoisData);
+    }
+
+    private function getWhoisData($domain)
+    {
+        $domain = strtolower($domain);
+        $whoisServer = 'whois.verisign-grs.com';
+        $port = 43;
+        
+        try {
+            $socket = fsockopen($whoisServer, $port, $errno, $errstr, 10);
+            if (!$socket) {
+                return null;
+            }
+            
+            fwrite($socket, $domain . "\r\n");
+            $whoisData = '';
+            while (!feof($socket)) {
+                $whoisData .= fgets($socket, 128);
+            }
+            fclose($socket);
+            
+            // Parse WHOIS response
+            $registrar = $this->parseWhoisField($whoisData, 'Registrar');
+            $creationDate = $this->parseWhoisField($whoisData, 'Creation Date');
+            $status = $this->parseWhoisField($whoisData, 'Status');
+            
+            return [
+                'domain' => $domain,
+                'registrar' => $registrar ?? 'Unknown',
+                'creation_date' => $creationDate ? date('Y-m-d', strtotime($creationDate)) : 'Unknown',
+                'status' => $status ?? 'Unknown'
+            ];
+        } catch (\Exception $e) {
+            return null;
+        }
+    }
+
+    private function parseWhoisField($whoisData, $fieldName)
+    {
+        if (preg_match('/' . preg_quote($fieldName, '/') . ':\s*(.+?)\n/i', $whoisData, $matches)) {
+            return trim($matches[1]);
+        }
+        return null;
     }
 }

@@ -17,8 +17,47 @@ class DomainExpiryController extends Controller
     {
         $request->validate(['domain' => 'required|string']);
         
-        $expiryDate = now()->addDays(rand(10, 1000))->toDateString();
+        $domain = $request->input('domain');
+        $expiryDate = $this->getWhoisExpiry($domain);
+        
+        if (!$expiryDate) {
+            return response()->json(['error' => 'Unable to retrieve expiry date for domain'], 400);
+        }
         
         return response()->json(['expiry' => $expiryDate]);
+    }
+
+    private function getWhoisExpiry($domain)
+    {
+        $domain = strtolower($domain);
+        $whoisServer = 'whois.verisign-grs.com';
+        $port = 43;
+        
+        try {
+            $socket = fsockopen($whoisServer, $port, $errno, $errstr, 10);
+            if (!$socket) {
+                return null;
+            }
+            
+            fwrite($socket, $domain . "\r\n");
+            $whoisData = '';
+            while (!feof($socket)) {
+                $whoisData .= fgets($socket, 128);
+            }
+            fclose($socket);
+            
+            // Parse expiry date from WHOIS response
+            if (preg_match('/Registry Expiry Date:\s*(.+?)\n/i', $whoisData, $matches)) {
+                $expiryDate = trim($matches[1]);
+                // Convert to standard date format (YYYY-MM-DD)
+                if (strtotime($expiryDate)) {
+                    return date('Y-m-d', strtotime($expiryDate));
+                }
+            }
+            
+            return null;
+        } catch (\Exception $e) {
+            return null;
+        }
     }
 }

@@ -10,8 +10,8 @@ class PageController extends Controller
     {
         return Inertia::render('HowItWorks', [
             'seo' => $this->generateSeo(
-                'How It Works',
-                'Learn how ToolsCraft processes your data locally and securely.'
+                'How ToolsCraft processes your data locally',
+                'Learn how ToolsCraft runs tools in the browser, keeps your data local, and avoids third-party tracking for fast secure utility workflows.'
             )
         ]);
     }
@@ -20,9 +20,29 @@ class PageController extends Controller
     {
         return Inertia::render('PrivacyPolicy', [
             'seo' => $this->generateSeo(
-                'Privacy Policy',
-                'Read about our commitment to your privacy and local-first data processing.'
+                'ToolsCraft privacy policy for secure local data usage',
+                'Read ToolsCraft’s privacy commitment for local-first data handling, no tracking, and browser-based security. Understand how your input stays private as you use the tools.'
             )
         ]);
+    }
+
+    public function sitemap()
+    {
+        $urls = [
+            ['loc' => route('home'), 'priority' => '1.0'],
+            ['loc' => route('how-it-works'), 'priority' => '0.8'],
+            ['loc' => route('privacy-policy'), 'priority' => '0.8'],
+            ['loc' => route('textalyzer.index'), 'priority' => '0.9'],
+            ['loc' => route('domain-expiry.index'), 'priority' => '0.9'],
+            ['loc' => route('domain-whois.index'), 'priority' => '0.9'],
+            ['loc' => route('lorem-ipsum.index'), 'priority' => '0.9'],
+            ['loc' => route('json-to-csv.index'), 'priority' => '0.9'],
+        ];
+
+        $lastMod = now()->toAtomString();
+        $xml = view('sitemap', compact('urls', 'lastMod'))->render();
+
+        return response($xml, 200)
+            ->header('Content-Type', 'application/xml');
     }
 }

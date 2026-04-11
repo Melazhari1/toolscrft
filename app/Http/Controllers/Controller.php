@@ -5,7 +5,7 @@ use Illuminate\Routing\Controller as BaseController;
 
 abstract class Controller extends BaseController
 {
-    protected function generateSeo($title, $description)
+    protected function generateSeo($title, $description, array $geo = [], $aeo = null)
     {
         return [
             'title' => $title . ' - ToolsCraft',
@@ -16,7 +16,9 @@ abstract class Controller extends BaseController
                 'name' => $title,
                 'description' => $description,
                 'url' => url()->current()
-            ]
+            ],
+            'geo' => $geo,
+            'aeo' => $aeo,
         ];
     }
 }

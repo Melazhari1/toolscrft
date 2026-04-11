@@ -8,7 +8,7 @@ class HomeController extends Controller
     public function index()
     {
         return Inertia::render('Home', [
-            'seo' => $this->generateSeo('Ultimate Tools Suite', 'Collection of professional utility tools.'),
+            'seo' => $this->generateSeo('Professional local SEO tools and data utilities', 'Access a suite of privacy-focused SEO and developer utilities for text analysis, domain data, placeholder text, and JSON conversion in a fast local interface.'),
             'tools' => [
                 ['name' => 'Textalyzer', 'slug' => 'textalyzer.index', 'desc' => 'Word count & keyword density'],
                 ['name' => 'Domain Expiry', 'slug' => 'domain-expiry.index', 'desc' => 'Check domain expiration dates'],

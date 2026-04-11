@@ -9,7 +9,7 @@ class DomainWhoisController extends Controller
     public function index()
     {
         return Inertia::render('Tools/DomainWhois', [
-            'seo' => $this->generateSeo('Whois Lookup', 'Lookup whois data for any domain.')
+            'seo' => $this->generateSeo('Domain whois lookup for registration and ownership', 'Lookup domain registration details, registrar information, creation dates, and status quickly. Ideal for audits and ownership research with no delay.')
         ]);
     }
 

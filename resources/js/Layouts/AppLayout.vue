@@ -9,7 +9,7 @@ const props = defineProps({
 const page = usePage();
 const isMobileMenuOpen = ref(false);
 
-const seoData = computed(() => props.seo || page.props.seo || { title: 'ToolsCraft', description: 'SEO Tools Suite', schema: {} });
+const seoData = computed(() => props.seo || page.props.seo || { title: 'ToolsCraft', description: 'SEO Tools Suite', schema: {}, geo: {}, aeo: null });
 
 const navLinks = [
   { name: 'All Tools', href: '/', route: 'home' },
@@ -32,6 +32,11 @@ const isActive = (href) => page.url === href;
     <Head>
       <title>{{ seoData.title }}</title>
       <meta name="description" :content="seoData.description" />
+      <meta v-if="seoData.geo?.region" name="geo.region" :content="seoData.geo.region" />
+      <meta v-if="seoData.geo?.placename" name="geo.placename" :content="seoData.geo.placename" />
+      <meta v-if="seoData.geo?.position" name="geo.position" :content="seoData.geo.position" />
+      <meta v-if="seoData.geo?.icbm" name="ICBM" :content="seoData.geo.icbm" />
+      <meta v-if="seoData.aeo" name="aeo" :content="seoData.aeo" />
       <component :is="'script'" type="application/ld+json">
         {{ JSON.stringify(seoData.schema) }}
       </component>

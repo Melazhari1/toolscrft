@@ -2,6 +2,12 @@
 import { ref, computed } from 'vue';
 import { Link } from '@inertiajs/vue3';
 import AppLayout from '@/Layouts/AppLayout.vue';
+import OtherToolsSlider from '@/Components/OtherToolsSlider.vue';
+
+defineProps({
+  tools: Array,
+  currentTool: String
+});
 
 const count = ref(3);
 const outputType = ref('paragraphs');
@@ -111,5 +117,7 @@ const copy = () => navigator.clipboard.writeText(output.value);
         <p v-for="(p, i) in output.split('\n\n')" :key="i" class="text-slate-600 text-lg leading-relaxed mb-6 last:mb-0">{{ p }}</p>
       </div>
     </div>
+
+    <OtherToolsSlider :tools="tools" :current-slug="currentTool" />
   </AppLayout>
 </template>

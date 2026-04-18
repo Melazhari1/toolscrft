@@ -9,7 +9,9 @@ class DomainExpiryController extends Controller
     public function index()
     {
         return Inertia::render('Tools/DomainExpiry', [
-            'seo' => $this->generateSeo('Domain expiry checker and expiration date lookup', 'Find domain expiration dates quickly with clear renewal details and expiry alerts. Works for common TLDs and simplifies domain management checks.')
+            'seo' => $this->generateSeo('Domain expiry checker and expiration date lookup', 'Find domain expiration dates quickly with clear renewal details and expiry alerts. Works for common TLDs and simplifies domain management checks.'),
+            'tools' => $this->getTools(),
+            'currentTool' => 'domain-expiry.index'
         ]);
     }
 

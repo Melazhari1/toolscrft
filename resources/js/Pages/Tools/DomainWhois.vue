@@ -2,7 +2,13 @@
 import { ref } from 'vue';
 import { Link } from '@inertiajs/vue3';
 import AppLayout from '@/Layouts/AppLayout.vue';
+import OtherToolsSlider from '@/Components/OtherToolsSlider.vue';
 import axios from 'axios';
+
+defineProps({
+  tools: Array,
+  currentTool: String
+});
 
 const domain = ref('');
 const result = ref(null);
@@ -61,5 +67,7 @@ const check = async () => {
         </div>
       </div>
     </div>
+
+    <OtherToolsSlider :tools="tools" :current-slug="currentTool" />
   </AppLayout>
 </template>

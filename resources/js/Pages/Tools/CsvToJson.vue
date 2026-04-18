@@ -2,6 +2,12 @@
 import { ref, watch } from 'vue';
 import { Link } from '@inertiajs/vue3';
 import AppLayout from '@/Layouts/AppLayout.vue';
+import OtherToolsSlider from '@/Components/OtherToolsSlider.vue';
+
+defineProps({
+  tools: Array,
+  currentTool: String
+});
 
 const csv = ref('');
 const json = ref('');
@@ -169,5 +175,7 @@ const download = () => {
         </div>
       </div>
     </div>
+
+    <OtherToolsSlider :tools="tools" :current-slug="currentTool" />
   </AppLayout>
 </template>

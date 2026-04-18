@@ -37,6 +37,8 @@ class PageController extends Controller
             ['loc' => route('domain-whois.index'), 'priority' => '0.9'],
             ['loc' => route('lorem-ipsum.index'), 'priority' => '0.9'],
             ['loc' => route('json-to-csv.index'), 'priority' => '0.9'],
+            ['loc' => route('csv-to-json.index'), 'priority' => '0.9'],
+            ['loc' => route('url-encoder.index'), 'priority' => '0.9'],
         ];
 
         $lastMod = now()->toAtomString();

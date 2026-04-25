@@ -31,7 +31,9 @@ abstract class Controller extends BaseController
             ['name' => 'Lorem Ipsum', 'slug' => 'lorem-ipsum.index', 'desc' => 'JS text generator'],
             ['name' => 'JSON to CSV', 'slug' => 'json-to-csv.index', 'desc' => 'JSON to CSV file conversion'],
             ['name' => 'CSV to JSON', 'slug' => 'csv-to-json.index', 'desc' => 'CSV to JSON conversion'],
-            ['name' => 'URL Encoder', 'slug' => 'url-encoder.index', 'desc' => 'Encode/decode URLs']
+            ['name' => 'URL Encoder', 'slug' => 'url-encoder.index', 'desc' => 'Encode/decode URLs'],
+            ['name' => 'CSS Minifier', 'slug' => 'css-minifier.index', 'desc' => 'Compress or format CSS'],
+            ['name' => 'Gradient Tool', 'slug' => 'css-gradient.index', 'desc' => 'Visual CSS gradient generator']
         ];
     }
 }

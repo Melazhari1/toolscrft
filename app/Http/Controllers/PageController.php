@@ -32,14 +32,11 @@ class PageController extends Controller
             ['loc' => route('home'), 'priority' => '1.0'],
             ['loc' => route('how-it-works'), 'priority' => '0.8'],
             ['loc' => route('privacy-policy'), 'priority' => '0.8'],
-            ['loc' => route('textalyzer.index'), 'priority' => '0.9'],
-            ['loc' => route('domain-expiry.index'), 'priority' => '0.9'],
-            ['loc' => route('domain-whois.index'), 'priority' => '0.9'],
-            ['loc' => route('lorem-ipsum.index'), 'priority' => '0.9'],
-            ['loc' => route('json-to-csv.index'), 'priority' => '0.9'],
-            ['loc' => route('csv-to-json.index'), 'priority' => '0.9'],
-            ['loc' => route('url-encoder.index'), 'priority' => '0.9'],
         ];
+
+        foreach ($this->getTools() as $tool) {
+            $urls[] = ['loc' => route($tool['slug']), 'priority' => '0.9'];
+        }
 
         $lastMod = now()->toAtomString();
         $xml = view('sitemap', compact('urls', 'lastMod'))->render();

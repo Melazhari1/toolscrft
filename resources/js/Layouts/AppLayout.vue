@@ -97,7 +97,7 @@ const isActive = (href) => page.url === href;
     <footer class="relative z-10 border-t border-slate-100 mt-20 py-20 bg-slate-50/50 backdrop-blur-sm">
       <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-4 gap-12 text-sm">
         <div class="md:col-span-2">
-           <span class="text-xl font-black bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-blue-600 tracking-tighter mb-4 block uppercase whitespace-nowrap">ToolsCraft</span>
+           <Link href="/" class="text-xl font-black bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-blue-600 tracking-tighter mb-4 block uppercase whitespace-nowrap">ToolsCraft</Link>
            <p class="text-slate-500 max-w-sm leading-relaxed font-medium">The ultimate local-first utility tool suite. Privacy focused, fast, and free forever. Built for developers and marketers.</p>
         </div>
         <div>

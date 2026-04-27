@@ -33,7 +33,9 @@ abstract class Controller extends BaseController
             ['name' => 'CSV to JSON', 'slug' => 'csv-to-json.index', 'desc' => 'CSV to JSON conversion'],
             ['name' => 'URL Encoder', 'slug' => 'url-encoder.index', 'desc' => 'Encode/decode URLs'],
             ['name' => 'CSS Minifier', 'slug' => 'css-minifier.index', 'desc' => 'Compress or format CSS'],
-            ['name' => 'Gradient Tool', 'slug' => 'css-gradient.index', 'desc' => 'Visual CSS gradient generator']
+            ['name' => 'Gradient Tool', 'slug' => 'css-gradient.index', 'desc' => 'Visual CSS gradient generator'],
+            ['name' => 'Slug Generator', 'slug' => 'slug-generator.index', 'desc' => 'SEO-friendly URL slugs'],
+            ['name' => 'UTM Builder', 'slug' => 'utm-generator.index', 'desc' => 'Campaign URL builder']
         ];
     }
 }

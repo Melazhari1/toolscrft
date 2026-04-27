@@ -11,6 +11,8 @@ use App\Http\Controllers\CsvToJsonController;
 use App\Http\Controllers\UrlEncoderController;
 use App\Http\Controllers\CssMinifierController;
 use App\Http\Controllers\CssGradientController;
+use App\Http\Controllers\SlugGeneratorController;
+use App\Http\Controllers\UtmGeneratorController;
 use App\Http\Controllers\PageController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -27,4 +29,6 @@ Route::get('/csv-to-json', [CsvToJsonController::class, 'index'])->name('csv-to-
 Route::get('/url-encoder', [UrlEncoderController::class, 'index'])->name('url-encoder.index');
 Route::get('/css-minifier', [CssMinifierController::class, 'index'])->name('css-minifier.index');
 Route::get('/css-gradient', [CssGradientController::class, 'index'])->name('css-gradient.index');
+Route::get('/slug-generator', [SlugGeneratorController::class, 'index'])->name('slug-generator.index');
+Route::get('/utm-generator', [UtmGeneratorController::class, 'index'])->name('utm-generator.index');
 Route::get('/sitemap.xml', [PageController::class, 'sitemap'])->name('sitemap');

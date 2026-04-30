@@ -1,2 +1,33 @@
 User-agent: *
 Disallow:
+
+# AI Model Crawlers
+User-agent: GPTBot
+Allow: /llm.txt
+
+User-agent: ClaudeBot
+Allow: /llm.txt
+
+User-agent: GoogleBot
+Allow: /llm.txt
+
+User-agent: Bingbot
+Allow: /llm.txt
+
+User-agent: CCBot
+Allow: /llm.txt
+
+User-agent: anthropic-ai
+Allow: /llm.txt
+
+User-agent: PerplexityBot
+Allow: /llm.txt
+
+User-agent: OmgiliBot
+Allow: /llm.txt
+
+User-agent: YouBot
+Allow: /llm.txt
+
+# Sitemap
+Sitemap: /sitemap.xml

@@ -1,0 +1,37 @@
+# ToolsCraft - LLM Context Guide
+
+> ToolsCraft is a suite of professional-grade tools designed for developers and marketers. It focuses on privacy, local-first processing, and speed, offering utilities for SEO, data conversion, and development.
+
+**Keywords**: Laravel, Vue3, Inertia.js, Developer Tools, Online Tools, Text Tools, Domain Tools, Web Application
+
+## Project Overview
+ToolsCraft is a Laravel 13 web application providing a suite of online developer and content tools. The application uses Inertia.js with Vue 3 for the frontend and Laravel for the backend, styled with Tailwind CSS and built with Vite.
+
+**Use Cases**: Text analysis, domain checking, data conversion, URL encoding, CSS generation, slug generation, UTM parameter creation
+
+## AI Agent Notes
+This project is optimized for AI development workflows. The clear separation of concerns (controllers, Vue components, migrations) and consistent naming conventions make it easy for agents to understand the codebase structure. Always follow the existing patterns when:
+- Adding new tools/routes
+- Creating new controllers and page components
+- Writing migrations
+- Adding tests in `tests/` directory
+
+
+## Core Tools
+
+- [Textalyzer](/textalyzer): Analyze word count and keyword density.
+- [Domain Expiry](/domain-expiry): Check when domains expire.
+- [Whois Lookup](/whois-lookup): View domain registration data.
+- [Lorem Ipsum Generator](/lorem-ipsum): Generate placeholder text.
+- [JSON to CSV](/json-to-csv): Convert JSON files to CSV.
+- [CSV to JSON](/csv-to-json): Convert CSV files to JSON.
+- https://www.ibm.com/think/topics/encoder-decoder-model(/url-encoder): Encode or decode URLs.
+- [CSS Minifier](/css-minifier): Compress and format CSS code.
+- [Gradient Tool](/gradient-tool): Create visual CSS gradients.
+- [Slug Generator](/slug-generator): Create SEO-friendly URL slugs.
+- [UTM Builder](/utm-builder): Build campaign tracking URLs.
+
+## Information
+
+- [How it Works](/how-it-works): Learn about the local-first approach.
+- [Privacy Policy](/privacy-policy): Read about how your data is handled.

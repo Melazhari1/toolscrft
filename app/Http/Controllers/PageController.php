@@ -32,6 +32,7 @@ class PageController extends Controller
             ['loc' => route('home'), 'priority' => '1.0'],
             ['loc' => route('how-it-works'), 'priority' => '0.8'],
             ['loc' => route('privacy-policy'), 'priority' => '0.8'],
+            ['loc' => url('/llm.txt'), 'priority' => '0.9'],
         ];
 
         foreach ($this->getTools() as $tool) {
